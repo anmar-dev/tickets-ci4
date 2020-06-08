@@ -26,6 +26,7 @@ function loadCardTickets(monthYear) {
 
 function populateCardsDash(data) {
     $("#totalTickets").text(data.totalTickets);
+    $("#totalTicketsMonth").text(data.totalTicketsMonth);
     $("#myTickets").text(data.myTickets);
     $("#openTickets").text(data.myOpenTickets);
 }

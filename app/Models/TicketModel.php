@@ -36,7 +36,7 @@ class TicketModel extends Model {
             $filter = "DATE_FORMAT(chamado.inicio, '%m%Y') = $monthYear";
         }
 
-        $sql = "SELECT DISTINCT COUNT(chamado.cod) AS total_chamados, DATE_FORMAT(chamado.inicio, '%d') as dia, DATE_FORMAT(chamado.inicio, '%d/%m/%Y') AS diamesano
+        $sql = "SELECT COUNT(DISTINCT(chamado.cod)) AS total_chamados, DATE_FORMAT(chamado.inicio, '%d') as dia, DATE_FORMAT(chamado.inicio, '%d/%m/%Y') AS diamesano
         FROM chamado
         LEFT JOIN evento ON chamado.cod = evento.chamado_cod
         LEFT JOIN AREA ON evento.area_cod = area.cod
@@ -88,11 +88,21 @@ class TicketModel extends Model {
         WHERE 
             $filter AND evento.atendente_cod = 8 AND chamado.status = 0";
 
+        $sql4 = "SELECT 
+            DISTINCT chamado.cod
+        FROM 
+            chamado
+        INNER JOIN 
+            evento ON chamado.cod = evento.chamado_cod
+        WHERE 
+            $filter";
+
         
         return [
             'totalTickets' => count($this->db->query($sql1)->getResult()),
             'myTickets' => count($this->db->query($sql2)->getResult()),
-            'myOpenTickets' => count($this->db->query($sql3)->getResult())
+            'myOpenTickets' => count($this->db->query($sql3)->getResult()),
+            'totalTicketsMonth' => count($this->db->query($sql4)->getResult())
         ];
     }
 }

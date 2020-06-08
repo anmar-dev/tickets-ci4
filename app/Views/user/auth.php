@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url('assets/img/icon.png')?>">
-    <title>Autenticação Chamados</title>
+    <title>Authentication Tickets</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?=base_url()?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,9 +31,9 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <div class="img-login">
-                                            <img src="<?=base_url('assets/img/icon.png')?>" alt="Manager" title="Manager" width="100" height="auto">
+                                            <img src="<?=base_url('assets/img/icon.png')?>" alt="logo" title="logo" width="100" height="auto">
                                         </div>
-                                        <h1 class="h4 text-gray-900 mb-4 mt-4">Bem vindo! Autenticação</h1>
+                                        <h1 class="h4 text-gray-900 mb-4 mt-4">Welcome again!</h1>
                                         
                                         <?php if (isset($validation)): ?>
                                             <div class="alert alert-danger">
@@ -51,14 +51,14 @@
                                         
                                     </div>
 
-                                    <form class="user" method="post" id="form" action="<?=base_url('User/login')?>">
+                                    <form class="user" method="post" id="form" action="<?=base_url('login')?>">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="login" name="login" aria-describedby="emailHelp" placeholder="Informe seu usuario..." >
+                                            <input type="text" class="form-control form-control-user" id="login" name="login" aria-describedby="emailHelp" placeholder="Type your user..." >
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Informe sua senha..." >
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Type your password..." >
                                         </div>
-                                        <button class="btn btn-gray btn-user btn-block" type="submit"> ENTRAR </button>
+                                        <button class="btn btn-gray btn-user btn-block" type="submit"> Login </button>
                                         <hr>
                                     </form>
                                 </div>
