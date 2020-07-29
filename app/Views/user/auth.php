@@ -7,18 +7,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url('assets/img/icon.png')?>">
-    <title>Autenticação Chamados</title>
+    <title>Authentication Tickets</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?=base_url()?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?=base_url()?>/assets/css/sb-admin-2.min.css?v=<?=CSS_VERSION?>" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/app.css?v=<?=CSS_VERSION?>" rel="stylesheet">
 </head>
 
-<body class="bg-gray">
+<body class="bg-vue">
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -31,9 +32,9 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <div class="img-login">
-                                            <img src="<?=base_url('assets/img/icon.png')?>" alt="Manager" title="Manager" width="100" height="auto">
+                                            <img src="<?=base_url('assets/img/icon.png')?>" alt="logo" title="logo" width="100" height="auto">
                                         </div>
-                                        <h1 class="h4 text-gray-900 mb-4 mt-4">Bem vindo! Autenticação</h1>
+                                        <h1 class="h4 text-gray-900 mb-4 mt-4">Welcome again!</h1>
                                         
                                         <?php if (isset($validation)): ?>
                                             <div class="alert alert-danger">
@@ -51,14 +52,14 @@
                                         
                                     </div>
 
-                                    <form class="user" method="post" id="form" action="<?=base_url('User/login')?>">
+                                    <form class="user" method="post" id="form" action="<?=base_url('login')?>">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="login" name="login" aria-describedby="emailHelp" placeholder="Informe seu usuario..." >
+                                            <input type="text" class="form-control form-control-user" id="login" name="login" aria-describedby="emailHelp" placeholder="Type your user..." >
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Informe sua senha..." >
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Type your password..." >
                                         </div>
-                                        <button class="btn btn-gray btn-user btn-block" type="submit"> ENTRAR </button>
+                                        <button class="btn btn-vue btn-user btn-block" type="submit"> Login </button>
                                         <hr>
                                     </form>
                                 </div>

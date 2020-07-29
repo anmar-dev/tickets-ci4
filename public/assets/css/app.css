@@ -1,9 +1,23 @@
+body {
+    font-family: "Poppins", sans-serif !important;
+    font-size: 14px !important;
+}
+
 .bg-gray {
     background: #535353 !important;
 }
 
 .btn-gray {
     background: #535353 !important;
+    color: #fff;
+}
+
+.bg-vue {
+    background: #41B883 !important;
+}
+
+.btn-vue {
+    background: #41B883 !important;
     color: #fff;
 }
 

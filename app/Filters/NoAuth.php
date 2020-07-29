@@ -6,14 +6,13 @@ use CodeIgniter\Filters\FilterInterface;
 
 class NoAuth implements FilterInterface {
 
-    public function before(RequestInterface $request) {
+    public function before(RequestInterface $request, $arguments = null) {
         
-        if (session()->get('isLoggedIn')){
+        if (session()->get('isLoggedIn'))
             return redirect()->to(base_url('home'));
-        }
     }
 
-    public function after(RequestInterface $request, ResponseInterface $response) {
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null) {
         // Do something here
     }
 }

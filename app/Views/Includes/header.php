@@ -11,8 +11,9 @@
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('')?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <!--<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">-->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous" />
 
@@ -38,10 +39,11 @@
 
     <!-- App CSS -->
     <link href="<?=base_url('')?>/assets/css/app.css?v=<?=CSS_VERSION?>" rel="stylesheet">
+
+    <script>
+        const BASE_URL = '<?=base_url('')?>';
+    </script>
 </head>
-<script>
-    const BASE_URL = '<?=base_url('')?>';
-</script>
 
 <body id="page-top">
     <!-- Page Wrapper -->
