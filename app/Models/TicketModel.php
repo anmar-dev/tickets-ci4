@@ -32,11 +32,9 @@ class TicketModel extends Model {
 
         $filter = "DATE_FORMAT(chamado.inicio, '%m%Y') = DATE_FORMAT(CURDATE(), '%m%Y')";
 
-        if ($monthYear) {
-            $filter = "DATE_FORMAT(chamado.inicio, '%m%Y') = $monthYear";
-        }
+        if ($monthYear) $filter = "DATE_FORMAT(chamado.inicio, '%m%Y') = ?";
 
-        $sql = "SELECT COUNT(DISTINCT(chamado.cod)) AS total_chamados, DATE_FORMAT(chamado.inicio, '%d') as dia, DATE_FORMAT(chamado.inicio, '%d/%m/%Y') AS diamesano
+        $sql = "SELECT COUNT(DISTINCT(chamado.cod)) AS total, DATE_FORMAT(chamado.inicio, '%d') as day, DATE_FORMAT(chamado.inicio, '%d/%m/%Y') AS daymonthyear
         FROM chamado
         LEFT JOIN evento ON chamado.cod = evento.chamado_cod
         LEFT JOIN AREA ON evento.area_cod = area.cod
@@ -50,7 +48,7 @@ class TicketModel extends Model {
         GROUP BY DAY(chamado.inicio)
         ORDER BY chamado.inicio ASC";
 
-        $result = $this->db->query($sql);
+        $result = $this->db->query($sql, [$monthYear]);
 
         return $result->getResult();
     }
@@ -59,50 +57,18 @@ class TicketModel extends Model {
 
         $filter = "DATE_FORMAT(chamado.inicio, '%m%Y') = DATE_FORMAT(CURDATE(), '%m%Y')";
 
-        if ($monthYear) {
-            $filter = "DATE_FORMAT(chamado.inicio, '%m%Y') = $monthYear";
-        }
+        if ($monthYear) $filter = "DATE_FORMAT(chamado.inicio, '%m%Y') = ?";
 
-        $sql1 = "SELECT 
-            DISTINCT chamado.cod
-        FROM 
-            chamado
-        INNER JOIN 
-            evento ON chamado.cod = evento.chamado_cod";
+        $sql1 = "SELECT cod FROM chamado";
+        $sql2 = "SELECT DISTINCT chamado.cod FROM chamado INNER JOIN evento ON chamado.cod = evento.chamado_cod WHERE evento.atendente_cod = 8";
+        $sql3 = "SELECT DISTINCT chamado.cod FROM chamado INNER JOIN evento ON chamado.cod = evento.chamado_cod WHERE evento.atendente_cod = 8 AND chamado.situacao = 0 AND evento.concluido = 0";
+        $sql4 = "SELECT DISTINCT chamado.cod FROM chamado INNER JOIN evento ON chamado.cod = evento.chamado_cod WHERE $filter";
 
-        $sql2 = "SELECT 
-            DISTINCT chamado.cod
-        FROM 
-            chamado
-        INNER JOIN 
-            evento ON chamado.cod = evento.chamado_cod
-        WHERE 
-            evento.atendente_cod = 8";
-
-        $sql3 = "SELECT 
-            DISTINCT chamado.cod
-        FROM 
-            chamado
-        INNER JOIN 
-            evento ON chamado.cod = evento.chamado_cod
-        WHERE 
-            $filter AND evento.atendente_cod = 8 AND chamado.status = 0";
-
-        $sql4 = "SELECT 
-            DISTINCT chamado.cod
-        FROM 
-            chamado
-        INNER JOIN 
-            evento ON chamado.cod = evento.chamado_cod
-        WHERE 
-            $filter";
-
-        
-        return [
-            'totalTickets' => count($this->db->query($sql1)->getResult()),
-            'myTickets' => count($this->db->query($sql2)->getResult()),
-            'myOpenTickets' => count($this->db->query($sql3)->getResult()),
-            'totalTicketsMonth' => count($this->db->query($sql4)->getResult())
-        ];
+        return array(
+            'totalTickets'      => count($this->db->query($sql1)->getResult()),
+            'myTickets'         => count($this->db->query($sql2)->getResult()),
+            'myOpenTickets'     => count($this->db->query($sql3)->getResult()),
+            'totalTicketsMonth' => count($this->db->query($sql4, [$monthYear])->getResult())
+        );
     }
 }

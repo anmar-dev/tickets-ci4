@@ -19,26 +19,24 @@ class User extends BaseController {
 
     public function login() {
 
-        $rules = [
-            'login'    => 'required',
-            'password' => 'required',
-        ];
+        $rules = array('login' => 'required', 'password' => 'required');
 
         if (!$this->validate($rules)) {
             $this->data['validation'] = $this->validator;
         } else {
 
+            $login    = $this->request->getPost("login", FILTER_SANITIZE_STRING);
+            $password = $this->request->getPost("password", FILTER_SANITIZE_STRING);
+
             $userModel = new UserModel();
-            $userData  = $userModel->where('nome', $this->request->getPost("login", FILTER_SANITIZE_STRING))
-                            ->where('senha', md5($this->request->getPost("password", FILTER_SANITIZE_STRING)))
-                            ->first();
+            $userData  = $userModel->getUser($login, md5($password));
 
             if ($userData) {
 
                 $this->session->set([
-                    'id'         => $userData['cod'],
-                    'firstname'  => $userData['nome'],
-                    'email'      => $userData['nome'] . '@adminformatica.com.br',
+                    'id'         => $userData->cod,
+                    'firstname'  => $userData->nome,
+                    'email'      => $userData->nome . '@adminformatica.com.br',
                     'isLoggedIn' => true
                 ]);
     

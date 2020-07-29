@@ -10,16 +10,17 @@ function loadCardTickets(monthYear) {
         },
         dataType: 'JSON',
         success: (d) => {
-            if (d.status = 1) {
+            if (d.status = 1) 
                 populateCardsDash(d.data)
-            }
         },
         beforeSend: (b) => {
-            
+            $("#searchTicket").find("i").removeClass("fa-search").addClass("fa-spinner fa-spin")
         },
-        complete: (c) => {},
+        complete: (c) => {
+            $('#searchTicket').find('i').removeClass('fa-spinner fa-spin').addClass('fa-search')
+        },
         error: (e) => { 
-            console.log(e) 
+            $('#searchTicket').find('i').removeClass('fa-spinner fa-spin').addClass('fa-search')
         }
     });
 }

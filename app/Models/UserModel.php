@@ -14,9 +14,9 @@ class UserModel extends Model
 		return $query->getResult();
     }
     
-    public function getUser($login, $pass) {
-        $sql   = "SELECT * FROM atendente WHERE (cod = '$login' OR nome = '$login') AND senha = '$pass' LIMIT 1";
-        $query = $this->db->query($sql);
+    public function getUser(string $login, string $pass) {
+        $sql   = "SELECT * FROM atendente WHERE (cod = ? OR nome = ?) AND senha = ? LIMIT 1";
+        $query = $this->db->query($sql, [$login, $login, $pass]);
 
 		return $query->getRow();
     }
