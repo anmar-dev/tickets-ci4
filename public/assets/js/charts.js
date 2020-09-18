@@ -1,6 +1,6 @@
 function colors(material = false) {
     const colors = {
-        type1: ['#ff4d4d', '#fed330', '#7d5fff', '#4b4b4b', '#3ae374', '#17c0eb', '#00b894', '#fdcb6e', '#6AF9C4', '#4572A7'],
+        type1: ['#41B883', '#ff4d4d', '#fed330', '#7d5fff', '#4b4b4b', '#3ae374', '#17c0eb', '#00b894', '#fdcb6e', '#6AF9C4', '#4572A7'],
         type2: ['#01B8AA', '#374649', '#FD625E', '#F2C80F', '#5F6B6D', '#8AD4EB', '#FE9666', '#A66999', '#2b908f', '#aaeeee'],
         type3: ['#B5CA92', '#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee', '#DF5353', '#3ae374'],
         type4: ['#118DFF', '#750985', '#C83D95', '#FF985E', '#1DD5EE', '#42F7C0', '#3049AD', '#F64F5C', '#fed330', '#AA4643'],

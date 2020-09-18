@@ -2,13 +2,13 @@
 
 function returnDaysOfMonth() {
 
-    $last_day = date("Y-m-t", strtotime('today'));
+    $lastDay = date("Y-m-t", strtotime('today'));
 
-    for ($data = strtotime(date('Y-m-01')); $data <= strtotime($last_day); $data = strtotime("+1 day", $data)):
-        $datas[] = date("d", $data);
+    for ($data = strtotime(date('Y-m-01')); $data <= strtotime($lastDay); $data = strtotime("+1 day", $data)):
+        $arrayData[] = date("d", $data);
     endfor;
 
-    return $datas;
+    return $arrayData;
 }
 
 function convertDateTime(string $dateStr): string {

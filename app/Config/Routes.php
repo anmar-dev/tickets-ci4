@@ -30,23 +30,14 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-//$routes->get('/', 'Home::index');
-//$routes->get('/', 'User::index');
-$routes->post('login', 'User::login');
-$routes->get('logout', 'User::logout');
-//$routes->match(['post', 'get'], 'logout', 'User::logout');
+$routes->get('/', 'Authentication::index');
+$routes->get('logout', 'Authentication::logout');
+$routes->post('login', 'Authentication::login');
 
-$routes->get('/', 'User::index', [
-	'filter' => 'noauth'
-]);
+$routes->get('home', 'Home::index');
 
-$routes->get('home', 'Home::index', [
-	'filter' => 'auth'
-]);
-
-//$routes->get('getTicket/(:any)', 'Ticket::getTicket/$1');
-$routes->get('getTicket', 'Ticket::getTicket');
-$routes->get('getCardTicket', 'Ticket::getCardTicket');
+$routes->get('getticket', 'Ticket::getTicket');
+$routes->get('getcardticket', 'Ticket::getCardTicket');
 
 /**
  * --------------------------------------------------------------------

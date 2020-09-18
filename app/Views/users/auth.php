@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url('assets/img/icon.png')?>">
-    <title>Authentication Tickets</title>
+    <title><?=$title?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?=base_url()?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

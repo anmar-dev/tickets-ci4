@@ -1,20 +1,22 @@
 <?php 
 
 namespace App\Controllers;
-use App\Models\UserModel;
+use App\Models\UsersModel;
 use CodeIgniter\Controller;
 
-class User extends BaseController {
+class Authentication extends BaseController {
     
+    protected $users_model;
+
     public function __construct() { 
-        $this->session = session();
+        $this->data['title']      = 'Authentication - Tickets';
+        $this->data['complement'] = '';
+        
+        $this->users_model = new UsersModel();
     }
 
 	public function index() { 
-        $this->data['title']      = 'Authentication - Tickets';
-		$this->data['complement'] = '';
-
-        echo view('user/auth', $this->data);
+        echo view('users/auth', $this->data);
     }
 
     public function login() {
@@ -28,12 +30,11 @@ class User extends BaseController {
             $login    = $this->request->getPost("login", FILTER_SANITIZE_STRING);
             $password = $this->request->getPost("password", FILTER_SANITIZE_STRING);
 
-            $userModel = new UserModel();
-            $userData  = $userModel->getUser($login, md5($password));
+            $userData = $this->users_model->getUser($login, md5($password));
 
             if ($userData) {
 
-                $this->session->set([
+                session()->set([
                     'id'         => $userData->cod,
                     'firstname'  => $userData->nome,
                     'email'      => $userData->nome . '@adminformatica.com.br',
@@ -46,12 +47,11 @@ class User extends BaseController {
             }
         }
         
-        echo view('user/auth', $this->data);
+        echo view('users/auth', $this->data);
     }
 
     public function logout(){
-        $this->session->destroy();
-
+        session()->destroy();
         return redirect()->to(base_url()); 
 	}
 }

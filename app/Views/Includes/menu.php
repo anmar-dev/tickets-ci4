@@ -1,8 +1,8 @@
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-vue sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-vue sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('Home/')?>">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url('home/')?>">
         <div class="sidebar-brand-icon "> <!-- rotate-n-15 -->
           <img src="<?=base_url('assets/img/icon-white.png')?>" alt="Logo" width="35">
         </div>
@@ -14,13 +14,13 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-          <a class="nav-link" href="<?=base_url('Home/')?>">
+          <a class="nav-link" href="<?=base_url('home')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
 
       <li class="nav-item">
-          <a class="nav-link" href="<?=base_url('Ticket/list')?>">
+          <a class="nav-link" href="<?=base_url('tickets')?>">
           <i class="fas fa-fw fa-ticket-alt"></i>
           <span>Tickets</span></a>
       </li>
